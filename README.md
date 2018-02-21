@@ -6,7 +6,7 @@ This repository holds a proof of concept of how D compiler (dmd) generates a bin
 
 Compiling the library is made with or without -H option to generate or not the interface file (*.di). After that, the test program is compiled against the library importing the source file (*.d).
 
-This import, [as stated in documentation](https://dlang.org/dmd-linux.html#interface-files), uses interface files before source files if they are present.
+With this import, [as stated in documentation](https://dlang.org/dmd-linux.html#interface-files), `dmd` uses interface files before source files if they are present.
 
 And, when the test program is compiled using that interface file, that program throws a SIGSEGV on every run.
 
@@ -16,7 +16,7 @@ And, when the test program is compiled using that interface file, that program t
 dmd -fPIC -shared -defaultlib=libphobos2.so **-H** libtest.d -oflibtest.so
 ```
 
-`-H` is the key of the proof of concept. If it is set, D compiler (dmd) generates `libtest.di` as an interface file, and when compiling the test program, `dmd` primary uses this file instead of `libtest.d`, and this throws a SIGSEGV when the test program calls function in the library.
+`-H` is the key of the proof of concept. If it is set, D compiler (dmd) generates `libtest.di` as an interface file, and when compiling the test program, `dmd` primary uses this file instead of `libtest.d`, and this throws a SIGSEGV when the test program calls the function implemented in the library. That SIGSEGV is not thrown when `dmd` uses the source file (*.d) instead of the interface file (*.di).
 
 # How to compile the test program
 
@@ -49,5 +49,6 @@ make run-di # compiles the library with -H, the test programa and runs it
 # Credits
 
 [Diego Lago](mailto:diego.lago.gonzalez@gmail.com)
+
 Repository: [GitHub](https://github.com/diegolagoglez/dlang-sigsegv-using-di-proof-of-concept)
 2018-02-21
