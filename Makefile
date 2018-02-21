@@ -1,3 +1,10 @@
+# Makefile to build the library and the test program to
+# show how D compiler (dmd) generates a binary that throws
+# a SIGSEGV when the test program is compiled using *.di
+# file instead of *.d file of the library. 
+#
+# Diego Lago <diego.lago.gonzalez@gmail.com>
+# Proof of concept v0.1 2018-02-21
 
 EXE := main
 EXE_SRC := main.d
