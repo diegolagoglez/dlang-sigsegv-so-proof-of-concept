@@ -1,27 +1,34 @@
 
-all: libtest.so main
+EXE := main
+EXE_SRC := main.d
+SO := libtest.so
+SONAME := test
+SO_SRC := libtest.d
+
+all: $(SO) $(EXE)
 
 DI_OPTION :=
 
-libtest.so: libtest.d
+$(SO): libtest.d
 	dmd -fPIC -shared -defaultlib=libphobos2.so $(DI_OPTION) $< -of$@
 
 .PHONY: lib
 
-lib: libtest.so
+lib: $(SO)
 
-main: libtest.so main.d
-	dmd main.d -defaultlib=libphobos2.so -L=-L. -L=-ltest
+$(EXE): $(SO) $(EXE_SRC)
+	dmd $(EXE_SRC) -defaultlib=libphobos2.so -L=-L. -L=-l$(SONAME)
 
 .PHONY: run
 
 run-di: DI_OPTION := -H
 run-di: run
 
-run: libtest.so main
-	LD_LIBRARY_PATH=. ./main
+run: $(SO) $(EXE)
+	LD_LIBRARY_PATH=. ./$(EXE)
 
 .PHONY: clean
 
 clean:
-	rm -f *.o *.so *.di main
+	rm -f *.o *.so *.di $(EXE)
+
