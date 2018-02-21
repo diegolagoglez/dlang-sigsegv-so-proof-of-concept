@@ -13,7 +13,7 @@ And, when the test program is compiled using that interface file, that program t
 # How to compile the library
 
 ```make
-dmd -fPIC -shared -defaultlib=libphobos2.so **-H** libtest.d -oflibtest.so
+dmd -fPIC -shared -defaultlib=libphobos2.so -H libtest.d -oflibtest.so
 ```
 
 `-H` is the key of the proof of concept. If it is set, D compiler (dmd) generates `libtest.di` as an interface file, and when compiling the test program, `dmd` primary uses this file instead of `libtest.d`, and this throws a SIGSEGV when the test program calls the function implemented in the library. That SIGSEGV is not thrown when `dmd` uses the source file (*.d) instead of the interface file (*.di).
@@ -50,5 +50,5 @@ make run-di # compiles the library with -H, the test programa and runs it
 
 [Diego Lago](mailto:diego.lago.gonzalez@gmail.com)
 
-Repository: [GitHub](https://github.com/diegolagoglez/dlang-sigsegv-using-di-proof-of-concept)
+Repository: [GitHub](https://github.com/diegolagoglez/dmd-sigsegv-using-di-proof-of-concept)
 2018-02-21
