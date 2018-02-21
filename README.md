@@ -42,9 +42,11 @@ make run-di # compiles the library with -H, the test programa and runs it
 
 # Hardware and software used
 
-* OS  : Ubuntu 16.04.3 LTS
-* Arch: i386
-* dmd : 2.078.1 (installed from DEB package)
+* OS       : Ubuntu 16.04.3 LTS
+* Arch     : i386
+* dmd      : 2.078.1 (installed from DEB package)
+* Processor: Pentium M 1.8 GHz
+* Memory   : 2 GiB
 
 # Credits
 
