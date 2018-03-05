@@ -1,4 +1,4 @@
-# Proof of concept of how D compiler (dmd) generates a binary that throws a SIGSEGV with using with *.di files
+# Proof of concept of how D compiler (dmd) generates a binary that throws a SIGSEGV when using with *.di files
 
 # Introduction
 
@@ -45,12 +45,19 @@ make run-di # compiles the library with -H, the test programa and runs it
 * OS       : Ubuntu 16.04.3 LTS
 * Arch     : i386
 * dmd      : 2.078.1 (installed from DEB package)
-* Processor: Pentium M 1.8 GHz
+* Processor: Intel Pentium M 1.8 GHz
 * Memory   : 2 GiB
+
+* OS       : Ubuntu 16.04.3 LTS
+* Arch     : x86_64
+* dmd      : 2.079.0 (from DEB package)
+* Processor: Intel Xeon ES-2620 2.00 GHz
+* Memory   : 32 GiB
 
 # Credits
 
 [Diego Lago](mailto:diego.lago.gonzalez@gmail.com)
 
 Repository: [GitHub](https://github.com/diegolagoglez/dmd-sigsegv-using-di-proof-of-concept)
-2018-02-21
+2018-03-05
+
